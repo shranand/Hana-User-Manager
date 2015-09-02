@@ -10,9 +10,9 @@ import com.deloitte.innovations.usermanager.HanaUserManager;
  */
 public class App 
 {
-    public static void main( String[] args )
+    public static void main( String[] a )
     {
-    	String [] a={"hana01.dev.dci.local" ,"30115", "jaisebastian", "Welcome.1", "create", "testUser1212", "SAP_HANA_TEST_OPENSSO", "testIden1212", "PUBLIC"};
+    	
     	
     	HanaCredentials hdef=new HanaCredentials(a[0],a[1],a[2],a[3]);
 		
