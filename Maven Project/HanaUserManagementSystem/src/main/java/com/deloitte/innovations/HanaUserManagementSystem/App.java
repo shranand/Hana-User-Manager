@@ -24,8 +24,8 @@ public class App
 		
 		if(a[4].equals("create")){
 							hum.createUser(tempUser);
-							//if(tempUser.getRoles()!=null)
-							//hum.updateUser(tempUser);
+							if(tempUser.getRoles()!=null)
+							hum.updateUser(tempUser);
 							
 		}
 		
