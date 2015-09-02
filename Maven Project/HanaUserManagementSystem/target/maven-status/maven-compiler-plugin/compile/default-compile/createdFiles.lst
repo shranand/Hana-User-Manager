@@ -1,0 +1,7 @@
+com\deloitte\innovations\HanaUserManagementSystem\User.class
+com\deloitte\innovations\usermanager\HanaUserManager.class
+com\deloitte\innovations\HanaUserManagementSystem\App.class
+com\deloitte\innovations\usermanager\HanaCredentials.class
+com\deloitte\innovations\helper\SQLHanaHelper.class
+com\deloitte\innovations\helper\SQLHelper.class
+com\deloitte\innovations\usermanager\UserManager.class
