@@ -5,7 +5,7 @@ import com.deloitte.innovations.usermanager.HanaCredentials;
 import com.deloitte.innovations.usermanager.HanaUserManager;
 
 /**
- * Hello world!
+ * HANA USER MANAGER
  *
  */
 public class App 
@@ -18,13 +18,14 @@ public class App
 		
 		HanaUserManager hum=new HanaUserManager(hdef);
 		
-		if(hum.checkCon())System.out.println("Hana Table Connection Success");
+		if(a.length==8)a[8]="";
+		if(hum.checkCon()){System.out.println("Hana Table Connection Success.");
 		
 		User tempUser=new User(a[5],a[6],a[7],a[8]);
 		
 		if(a[4].equals("create")){
 							hum.createUser(tempUser);
-							if(tempUser.getRoles()!=null)
+							if(tempUser.getRoles()!=null||a[8]!="")
 							hum.updateUser(tempUser);
 							
 		}
@@ -38,6 +39,7 @@ public class App
 		}
 		
 		else System.out.println("Invalid Action Specified"); 
-		
+		}
+		else System.out.println("Hana Table Connection Failure.") ;
     }
 }

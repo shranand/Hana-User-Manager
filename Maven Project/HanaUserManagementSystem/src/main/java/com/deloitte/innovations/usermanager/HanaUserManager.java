@@ -32,7 +32,7 @@ public class HanaUserManager implements UserManager {
 		// TODO Auto-generated method stub
 		
 		String query="CREATE USER "+tempUser.getName()+" WITH IDENTITY '"+tempUser.getIdentity()+"' FOR SAML PROVIDER "+tempUser.getIDPName();
-		try {System.out.println("Query is:"+query);
+		try {//System.out.println("Query is:"+query);
 			sqlHanaHelper.execute(query);
 			System.out.println("Successfully Created User.");
 			sqlHanaHelper.closeConnection();
@@ -95,7 +95,7 @@ public class HanaUserManager implements UserManager {
 	public void deleteUser(User tempUser) {
 		// TODO Auto-generated method stub
 		String query="DROP USER "+tempUser.getName();
-		try {System.out.println("Query is:"+query);
+		try {//System.out.println("Query is:"+query);
 			sqlHanaHelper.execute(query);
 			System.out.println("Successfully Deleted User.");
 			sqlHanaHelper.closeConnection();
