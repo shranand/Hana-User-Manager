@@ -35,6 +35,7 @@ public class HanaUserManager implements UserManager {
 		try {//System.out.println("Query is:"+query);
 			sqlHanaHelper.execute(query);
 			System.out.println("Successfully Created User.");
+			if(tempUser.getRoles().get(0)=="")
 			sqlHanaHelper.closeConnection();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -56,23 +57,28 @@ public class HanaUserManager implements UserManager {
 		while(rs.next()){
 			grantedRoles+=rs.getString(1)+",";
 		}
-		List<String> granted_roles = Arrays.asList(grantedRoles.split("\\s*,\\s*"));
 		
+		List<String> granted_roles = Arrays.asList(grantedRoles.split("\\s*,\\s*"));
+		if(grantedRoles!=""){
 		for(String temp_role:granted_roles){
 			if(tempUser.getRoles().indexOf(temp_role)==-1){//Revoke Here 
 															System.out.println("Revoking: "+ temp_role);
 															String query="REVOKE "+temp_role+" FROM "+tempUser.getName();
+															System.out.println("Query: "+query);
 															sqlHanaHelper.execute(query);
 															}
 			}
-		
+		}
+		if(tempUser.getRoles().get(0)!=""){
 		for(String temp_role:tempUser.getRoles()){
-			if(granted_roles.indexOf(temp_role)==-1){//Revoke Here 
+			if(granted_roles.indexOf(temp_role)==-1){//Grant Here 
 				System.out.println("Granting: "+ temp_role);
 				String query="GRANT "+temp_role+" TO "+tempUser.getName();
 				sqlHanaHelper.execute(query);
 				}
+			}
 		}
+		
 		//grant 
 		
 		

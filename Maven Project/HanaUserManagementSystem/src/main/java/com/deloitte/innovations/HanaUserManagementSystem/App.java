@@ -1,6 +1,8 @@
 package com.deloitte.innovations.HanaUserManagementSystem;
 
 
+
+
 import com.deloitte.innovations.usermanager.HanaCredentials;
 import com.deloitte.innovations.usermanager.HanaUserManager;
 
@@ -18,15 +20,16 @@ public class App
 		
 		HanaUserManager hum=new HanaUserManager(hdef);
 		
-		if(a.length==8)a[8]="";
+		
 		if(hum.checkCon()){System.out.println("Hana Table Connection Success.");
 		
-		User tempUser=new User(a[5],a[6],a[7],a[8]);
+		User tempUser=new User(a[5],a[6],a[7],((a.length==8)?"":a[8]));
 		
 		if(a[4].equals("create")){
 							hum.createUser(tempUser);
-							if(tempUser.getRoles()!=null||a[8]!="")
-							hum.updateUser(tempUser);
+							if(a.length==9 && a[8]!="")
+								{
+							hum.updateUser(tempUser);}
 							
 		}
 		
